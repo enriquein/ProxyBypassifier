@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProxyBypassifier.Snatcher;
 
 namespace ProxyBypassifier.Controllers
 {
@@ -10,14 +11,16 @@ namespace ProxyBypassifier.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-
             return View();
         }
 
-        public ActionResult About()
+        public ContentResult Get()
         {
-            return View();
+            var result = new ContentResult();
+            result.Content = WebSnatcher.Get(@"http://msdn.com");
+            result.ContentEncoding = System.Text.Encoding.UTF8;
+            result.ContentType = @"text/html";
+            return result;
         }
     }
 }
