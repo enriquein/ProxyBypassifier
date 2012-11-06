@@ -30,7 +30,7 @@ def show_website_form():
     return render_template('website_form.html')    
 
 @app.route('/,', methods=['POST'])
-def get_remote_site()
+def get_remote_site():
     return 'Placeholder'
 
 if __name__ == '__main__':
