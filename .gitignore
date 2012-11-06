@@ -1,9 +1,1 @@
-[Bb]in
-[Oo]bj
-*.suo
-*.user
-*.gpState
-Thumbs.db
-Desktop.ini
-*.Publish.xml
-packages/
+.DS_STORE
