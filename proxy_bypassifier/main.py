@@ -1,4 +1,5 @@
 import sqlite3
+import urllib
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from contextlib import closing
 
@@ -31,7 +32,10 @@ def show_website_form():
 
 @app.route('/,', methods=['POST'])
 def get_remote_site():
-    return 'Placeholder'
+    f = urllib.urlopen(request.form['url'])
+    s = f.read()
+    f.close()
+    return s
 
 if __name__ == '__main__':
     app.run()
