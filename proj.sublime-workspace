@@ -25,15 +25,16 @@
 			]
 		]
 	},
-	"buffers":
-	[
-	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 357.0,
+		"height": 181.0,
 		"selected_items":
 		[
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
 			[
 				"PACKAGE",
 				"Package Control: Discover Packages"
@@ -59,7 +60,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 435.0
+		"width": 561.0
 	},
 	"console":
 	{
@@ -77,6 +78,8 @@
 	"file_history":
 	[
 		"/Users/enriquein/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/enriquein/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/enriquein/_code/ProxyBypassifier/proxy_bypassifier/fetcher/__init__.py",
 		"/Users/enriquein/_code/reset_git_author.sh"
 	],
 	"find":
@@ -112,14 +115,6 @@
 		"whole_word": false,
 		"wrap": false
 	},
-	"groups":
-	[
-		{
-			"sheets":
-			[
-			]
-		}
-	],
 	"incremental_find":
 	{
 		"height": 36.0
