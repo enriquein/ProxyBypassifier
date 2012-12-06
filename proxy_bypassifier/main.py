@@ -22,7 +22,15 @@ def show_website_form():
 
 @app.route('/,', methods=['POST'])
 def get_remote_site():
-    return fetcher.get_url_contents(request.form['url'])
+    is_google_result = 'false'
+
+    try:
+        is_google_result = request.form['googleresult']
+    except KeyError:
+        pass
+
+    return fetcher.get_url_contents(request.form['url'], is_google_result)
+
 
 if __name__ == '__main__':
     app.run()
