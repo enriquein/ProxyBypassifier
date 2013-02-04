@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('.button').button();
     $('.tabs').tabs();
-    $('#url').validate();
+    $('form#url').validate();
+    $('form#file').validate();
 });

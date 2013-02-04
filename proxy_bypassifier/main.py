@@ -31,6 +31,22 @@ def get_remote_site():
 
     return fetcher.get_url_contents(request.form['url'], is_google_result)
 
+@app.route('/file', methods=['POST'])
+def get_remote_file():
+    contents = None
+    filename = None
+
+    try:
+        contents = fetcher.get_file(request.form['file'])
+        filename = fetcher.get_filename_from_url(request.form['file'])
+    except KeyError
+        return 'Error: Url for file is required. Go back and fix that. Also, stop bypassing my javascript validations.'
+
+    resp = make_response(contents)
+    resp.headers['Content-Type'] = 'application/force-download'
+    resp.headers['Content-Length'] = len(resp)
+    resp.headers['Content-Disposition'] = 'attachment; filename=' + filename + '_'
+    return resp
 
 if __name__ == '__main__':
     app.run()

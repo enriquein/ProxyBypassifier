@@ -1,5 +1,5 @@
 import urllib
-from urlparse import urlparse, parse_qs
+from urlparse import urlparse, parse_qs, urlsplit
 
 def get_url_contents(url, is_google_result_url):
     stripped = url.strip()
@@ -20,3 +20,10 @@ def get_url_contents(url, is_google_result_url):
     contents = tmp.read()
     tmp.close()
     return contents
+
+def get_remote_file(url):
+    file_contents = get_url_contents(url, false)
+    return file_contents
+
+def get_filename_from_url(url):
+    return urlparse.urlsplit(url)[2].split('/')[-1]
