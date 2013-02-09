@@ -1,4 +1,4 @@
-from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
+from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash, make_response
 import fetcher
 import db_layer
 
@@ -22,10 +22,10 @@ def show_website_form():
 
 @app.route('/,', methods=['POST'])
 def get_remote_site():
-    is_google_result = 'false'
+    is_google_result = False
 
     try:
-        is_google_result = request.form['googleresult']
+        is_google_result = (request.form['googleresult'] == 'true')
     except KeyError:
         pass
 
@@ -37,14 +37,14 @@ def get_remote_file():
     filename = None
 
     try:
-        contents = fetcher.get_file(request.form['file'])
+        contents = fetcher.get_remote_file(request.form['file'])
         filename = fetcher.get_filename_from_url(request.form['file'])
-    except KeyError
+    except KeyError:
         return 'Error: Url for file is required. Go back and fix that. Also, stop bypassing my javascript validations.'
 
     resp = make_response(contents)
     resp.headers['Content-Type'] = 'application/force-download'
-    resp.headers['Content-Length'] = len(resp)
+    #resp.headers['Content-Length'] = len(resp)
     resp.headers['Content-Disposition'] = 'attachment; filename=' + filename + '_'
     return resp
 

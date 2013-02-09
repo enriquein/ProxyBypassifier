@@ -11,7 +11,7 @@ def get_url_contents(url, is_google_result_url):
     if not (url.strip().startswith( ('http://', 'https://') )):
         stripped = 'http://' + stripped
 
-    if (is_google_result_url == 'true'):
+    if (is_google_result_url):
         urlparts = urlparse(stripped)
         querystring = parse_qs(urlparts.query)
         stripped = querystring['url'][0]
@@ -22,8 +22,8 @@ def get_url_contents(url, is_google_result_url):
     return contents
 
 def get_remote_file(url):
-    file_contents = get_url_contents(url, false)
+    file_contents = get_url_contents(url, False)
     return file_contents
 
 def get_filename_from_url(url):
-    return urlparse.urlsplit(url)[2].split('/')[-1]
+    return urlsplit(url)[2].split('/')[-1]
